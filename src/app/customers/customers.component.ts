@@ -24,11 +24,11 @@ export class CustomersComponent implements OnInit {
 
     //var client = new JsonServiceClient("http://northwind.servicestack.net");
     //var cust = client.get('/customers?format=json');
-    this.http.get<CustomersModel[]>('http://northwind.servicestack.net/customers?format=json').subscribe(cust => {
+    this.http.get<CustomersModel>('http://northwind.servicestack.net/customers?format=json').subscribe(cust => {
       this.Customers = new MatTableDataSource(cust.Customers);
       this.Customers.sort = this.sort;
       this.Customers.paginator  = this.paginator;
-      console.log(cust.Customers);
+      //console.log(cust);
     }, err => {
       console.log(err);
     });
