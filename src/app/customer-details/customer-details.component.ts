@@ -3,6 +3,8 @@ import { HttpClient} from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import {CustomersDetailModel} from './customerdetail.model';
+
 
 @Component({
   selector: 'app-customer-details',
@@ -20,8 +22,9 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params.id;
-    this.http.get<any>('http://northwind.servicestack.net/customers/' + id + '?format=json').subscribe(dtl => {
+    this.http.get<CustomersDetailModel>('http://northwind.servicestack.net/customers/' + id + '?format=json').subscribe(dtl => {
       console.log(dtl);
+      //console.log(dtl);
       this.customer = dtl.Customer;
       this.customerOrders = dtl.CustomerOrders
     }, err => {

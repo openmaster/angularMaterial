@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="redirect('home')">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="redirect('customers')">
+        <mat-icon>people_outline</mat-icon>
+        <span>Customers</span>
+      </button>
+      <button mat-menu-item (click)="redirect('orders')">
+        <mat-icon>add_shopping_cart</mat-icon>
+        <span>Orders</span>
+      </button>
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">TELolp App</span>
+</mat-toolbar>

@@ -12,6 +12,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     OrdersComponent,
     HomeComponent,
     CustomerDetailsComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
