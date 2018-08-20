@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 //import { JsonServiceClient } from '@servicestack/client';
 import { HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 // Material design
 //import {MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
@@ -16,7 +17,7 @@ import {CustomersModel} from './customer.model';
 export class CustomersComponent implements OnInit {
   Customers;
   displayedColumns = ['Id', 'ContactName', 'ContactTitle', 'CompanyName', 'Phone'];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -33,6 +34,11 @@ export class CustomersComponent implements OnInit {
       console.log(err);
     });
 
+  }
+  renderTo(id){
+    console.log(id);
+    let rout = '/customer/' + id
+    this.router.navigate([rout])
   }
 
 }
