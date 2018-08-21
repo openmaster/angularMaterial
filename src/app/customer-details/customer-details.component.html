@@ -1,2 +1,75 @@
-<div>
+<div class="container">
+  <mat-card class="" *ngIf="customer">
+    <mat-card-header>
+      <mat-card-title><h2>Customer Details</h2></mat-card-title>
+      <mat-card-subtitle ><h4>{{customer.Id}}</h4></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Name: </h5>
+        </div>
+        <div class="col-md-2">
+          {{customer.ContactName}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Title: </h5>
+        </div>
+        <div class="col-md-2">
+          {{customer.ContactTitle}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Company Name: </h5>
+        </div>
+        <div class="col-md-2">
+          {{customer.CompanyName}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Phone: </h5>
+        </div>
+        <div class="col-md-2">
+          {{customer.Phone}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Fax: </h5>
+        </div>
+        <div class="col-md-2">
+          {{customer.Fax}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Address: </h5>
+        </div>
+        <div class="col-md-2">
+          {{customer.Address}}<br />
+          {{customer.City}}, {{customer.PostalCode}}<br />
+          {{customer.Country}}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+  <!-- Customer Order -->
+  <mat-card class="" *ngIf="customerOrders">
+    <mat-card-header>
+      <mat-card-title><h2>Customer Orders</h2></mat-card-title>
+      <mat-card-subtitle ><h4>{{customerOrders.length}}</h4></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Orders</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
