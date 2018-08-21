@@ -36,7 +36,6 @@ export class CustomersComponent implements OnInit {
 
   }
   renderTo(id){
-    console.log(id);
     let rout = '/customer/' + id
     this.router.navigate([rout])
   }
