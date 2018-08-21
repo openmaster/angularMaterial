@@ -1,11 +1,11 @@
-<div class="">
+<div class="container">
   <h3 class="text-center"> List of all your customers </h3>
   <div class="">
     <table mat-table [dataSource]="Customers" matSort >
       <!-- Id Column -->
       <ng-container matColumnDef="Id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let element" > <button mat-button color="primary" (click)="renderTo(element.Id)">{{element.Id}} </button></td>
+        <td mat-cell *matCellDef="let element" > <a href="/customer/{{element.Id}}">{{element.Id}} </a></td>
       </ng-container>
 
       <!-- Name Column -->
@@ -65,7 +65,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 15, 20, 30]" showFirstLastButtons></mat-paginator>
   </div>
 
 </div>

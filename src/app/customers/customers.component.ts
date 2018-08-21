@@ -35,9 +35,5 @@ export class CustomersComponent implements OnInit {
     });
 
   }
-  renderTo(id){
-    let rout = '/customer/' + id
-    this.router.navigate([rout])
-  }
 
 }

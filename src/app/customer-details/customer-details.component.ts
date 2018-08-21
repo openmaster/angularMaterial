@@ -40,9 +40,4 @@ export class CustomerDetailsComponent implements OnInit {
       console.log(err);
     });
   }
-  renderTo(id){
-    let rout = '/order/' + id
-    this.router.navigate([rout])
-  }
-
 }
