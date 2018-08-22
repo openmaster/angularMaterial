@@ -17,7 +17,9 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 })
 export class CustomerDetailsComponent implements OnInit {
   customer;
+  Orders;
   CustomersOrders;
+  OrderDetail;
   displayedColumns = ['Id', 'CustomerId', 'EmployeeId', 'Freight', 'OrderDate'];
   constructor(
     private http: HttpClient,
@@ -33,11 +35,17 @@ export class CustomerDetailsComponent implements OnInit {
     this.http.get<CustomersDetailModel>('http://northwind.servicestack.net/customers/' + id + '?format=json').subscribe(dtl => {
       //console.log(dtl.CustomerOrders);
       this.customer = dtl.Customer;
+      this.Orders = dtl.CustomerOrders
       this.CustomersOrders = new MatTableDataSource(_.pluck(dtl.CustomerOrders, 'Order'));
       this.CustomersOrders.sort = this.sort;
       this.CustomersOrders.paginator  = this.paginator;
     }, err => {
       console.log(err);
     });
+  }
+  getToOrderDetail(order) {
+    let OrderDetail;
+    this.OrderDetail = _.filter(this.Orders, (r) => r.Order.Id === order.Id)
+    localStorage.setItem('Order', JSON.stringify(this.OrderDetail[0]));
   }
 }

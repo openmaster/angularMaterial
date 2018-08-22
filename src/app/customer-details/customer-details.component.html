@@ -6,50 +6,50 @@
     </mat-card-header>
     <mat-card-content>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h5>Name: </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           {{customer.ContactName}}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h5>Title: </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           {{customer.ContactTitle}}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h5>Company Name: </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           {{customer.CompanyName}}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h5>Phone: </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           {{customer.Phone}}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h5>Fax: </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           {{customer.Fax}}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h5>Address: </h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           {{customer.Address}}<br />
           {{customer.City}}, {{customer.PostalCode}}<br />
           {{customer.Country}}
@@ -70,7 +70,7 @@
       <!-- Id Column -->
       <ng-container matColumnDef="Id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let element" > <a href="/order/{{element.Id}}">{{element.Id}} </a></td>
+        <td mat-cell *matCellDef="let element" > <a href="/order/{{element.Id}}" (click)="getToOrderDetail(element)">{{element.Id}} </a></td>
       </ng-container>
 
       <!-- Name Column -->

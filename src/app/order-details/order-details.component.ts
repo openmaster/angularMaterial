@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-order-details',
@@ -9,23 +10,33 @@ import { Location } from '@angular/common';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-  order = null;
-  orderDetails = null;
+  order;
+  orderDetail;
+  errMessage;
+  displayedColumns = ['OrderId', 'ProductId', 'Discount', 'Quantity', 'UnitPrice'];
   constructor(
-    private http: HttpClient,
     private route: ActivatedRoute,
     private location: Location
   ) { }
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
     const id = this.route.snapshot.params.id;
-    this.http.get<any>('http://northwind.servicestack.net/customers/' + id + '?format=json').subscribe(dtl => {
-      console.log(dtl);
-      this.order = dtl.Order;
-      this.orderDetails = dtl.OrderDetails
-    }, err => {
-      console.log(err);
-    });
+    if(localStorage.getItem('Order') ) {
+      if (JSON.parse(localStorage.getItem('Order')).Order.Id.toString() !== id.toString())
+      {
+        this.errMessage = " ERROR !! No such Order."
+        return
+
+      }
+      this.order = JSON.parse(localStorage.getItem('Order'))
+      this.orderDetail = new MatTableDataSource(this.order.OrderDetails);
+      this.orderDetail.sort = this.sort;
+      this.orderDetail.paginator  = this.paginator;
+    } else {
+      this.errMessage = " ERROR !! No such Order."
+    }
   }
 
 }
