@@ -23,8 +23,13 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit() {
 
-    //var client = new JsonServiceClient("http://northwind.servicestack.net");
-    //var cust = client.get('/customers?format=json');
+    var client = new JsonServiceClient("http://northwind.servicestack.net");
+    client.get('/customers?format=json').then(r => {
+      console.log(r);
+    })
+    .catch(e => {
+      console.log(e);
+    })
     this.http.get<CustomersModel>('http://northwind.servicestack.net/customers?format=json').subscribe(cust => {
       this.Customers = new MatTableDataSource(cust.Customers);
       this.Customers.sort = this.sort;
