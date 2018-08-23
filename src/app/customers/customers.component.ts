@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-//import { JsonServiceClient } from '@servicestack/client';
+import { JsonServiceClient } from '@servicestack/client';
 import { HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
 // Material design
